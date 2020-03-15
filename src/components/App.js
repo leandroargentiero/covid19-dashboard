@@ -4,13 +4,25 @@ import { theme, GlobalStyles } from '../themes';
 
 import '../fonts/index.css';
 import Hero from './Hero';
+import FloatingContainer from './FloatingContainer';
+import Stats from './Stats';
+import CountrySelector from './CountrySelector';
+
+const API_ENDPOINT = process.env.REACT_APP_API_KEY;
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Hero />
-      <p>Hello World!</p>
+      <main>
+        <Hero />
+        <div className='container'>
+          <FloatingContainer>
+            <Stats title='Global status' url={API_ENDPOINT} />
+            <CountrySelector />
+          </FloatingContainer>
+        </div>
+      </main>
     </ThemeProvider>
   );
 };
