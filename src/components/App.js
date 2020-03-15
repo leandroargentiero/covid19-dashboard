@@ -1,11 +1,18 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import { theme, GlobalStyles } from '../themes';
 
-function App() {
+import '../fonts/index.css';
+import Hero from './Hero';
+
+const App = () => {
   return (
-    <div className='App'>
-      <p>hello world!</p>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Hero />
+      <p>Hello World!</p>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
