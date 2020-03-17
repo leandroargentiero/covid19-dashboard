@@ -50,7 +50,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .container {
-    max-width: 960px;
+    width: 100%;
+    max-width: 850px;
     margin: 0 auto;
     padding: 0 16px 24px 16px;
   }
