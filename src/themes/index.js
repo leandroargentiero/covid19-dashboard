@@ -21,6 +21,25 @@ export const theme = {
   rgba(0, 0, 0, 0.1) 0px 20px 30px`,
 };
 
+// #252f3f
+// #374151
+// ##161D2E
+
+export const darkTheme = {
+  borderRadius: '12px',
+  colors: {
+    primary: '#4B12A5',
+    textOnPrimary: '#fff',
+    secondary: '#79FC4C',
+    grey: '#E6E6F0',
+    background: '#161D2E',
+    text: '#444',
+    ...statusColors,
+  },
+  boxShadow: `rgba(0, 0, 0, 0.05) 0px 1px 0px, rgba(0, 0, 0, 0.03) 0px 0px 8px,
+  rgba(0, 0, 0, 0.1) 0px 20px 30px`,
+};
+
 const customMediaQuery = maxWidth => `@media (max-width: ${maxWidth}px)`;
 
 export const mediaQuery = {

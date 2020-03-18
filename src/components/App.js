@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyles } from '../themes';
+import { theme, darkTheme, GlobalStyles } from '../themes';
 
 import '../fonts/index.css';
 import Hero from './Hero';
