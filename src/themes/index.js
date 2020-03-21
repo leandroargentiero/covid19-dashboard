@@ -12,7 +12,7 @@ export const theme = {
     primary: '#4B12A5',
     textOnPrimary: '#fff',
     secondary: '#79FC4C',
-    grey: '#E6E6F0',
+    grey: '#f2f2f2',
     background: '#fbf8ff',
     text: '#444',
     ...statusColors,

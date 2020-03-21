@@ -15,6 +15,7 @@ const StatsHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
   flex-wrap: wrap;
 `;
 
@@ -27,7 +28,7 @@ const StatsTitle = styled.h2`
 
 const StatsDate = styled.p`
   font-size: 14px;
-  margin: 0;
+  margin: 8px 0 0 0;
   opacity: 0.5;
 `;
 
@@ -44,12 +45,14 @@ const Stats = ({ title, url, children }) => {
   return (
     <StatsSection>
       <StatsHeader>
-        <StatsTitle>{title}</StatsTitle>
-        <StatsDate>
-          Last updated: {data?.lastUpdate && formatDate(data.lastUpdate)}
-        </StatsDate>
+        <div>
+          <StatsTitle>{title}</StatsTitle>
+          <StatsDate>
+            Last updated: {data?.lastUpdate && formatDate(data.lastUpdate)}
+          </StatsDate>
+        </div>
+        {children && children}
       </StatsHeader>
-      {children && children}
       {isError ? (
         <ErrorPlaceholder
           emoji='🧭'
