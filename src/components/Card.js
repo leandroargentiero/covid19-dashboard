@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import { formatNumber } from '../utils';
+import Loader from './Loader';
 
 const CardWrapper = styled.div`
-  background: ${props => props.theme.colors.background};
   font-size: 2rem;
   border-radius: 4px;
   padding: 20px;
+  position: relative;
+  text-align: center;
+  border: 1px solid ${props => props.theme.colors.grey};
 `;
 const CardTitle = styled.h4`
   font-size: 14px;
-  margin: 0 0 8px 0;
-  opacity: 0.7;
+  margin: 0;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 400;
+  background: #fff;
+  padding: 0 20px;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
-const CardNumber = styled.h3`
-  font-size: 2.5rem;
+const CardValue = styled.h3`
+  font-size: 2rem;
   margin: 0;
-  font-weight: 500;
+  font-weight: 400;
   color: ${props => {
     switch (props.info) {
       case 'warning':
@@ -40,19 +49,39 @@ const LoadingIndicator = styled.p`
   color: ${props => props.theme.colors.primary};
 `;
 
+const checkValue = (title, data) => {
+  switch (title) {
+    case 'confirmed':
+      return formatNumber(data.confirmed.value);
+    case 'recovered':
+      return formatNumber(data.recovered.value);
+    case 'deaths':
+      return formatNumber(data.deaths.value);
+    default:
+      return '';
+  }
+};
+
 const Card = ({ title, info, loading, data }) => {
   return (
     <CardWrapper>
       <CardTitle>{title}</CardTitle>
       {loading ? (
-        <LoadingIndicator>Loading...</LoadingIndicator>
+        <Loader />
       ) : (
         <>
-          <CardNumber info={info}>{formatNumber(data)}</CardNumber>
+          <CardValue info={info}>{checkValue(title, data)}</CardValue>
         </>
       )}
     </CardWrapper>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  info: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  data: PropTypes.object,
 };
 
 export default Card;

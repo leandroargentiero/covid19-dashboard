@@ -27,7 +27,7 @@ const StatsTitle = styled.h2`
 `;
 
 const StatsDate = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   margin: 8px 0 0 0;
   opacity: 0.5;
 `;
@@ -36,12 +36,11 @@ const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 2rem;
-  margin: 20px 0 40px 0;
+  margin: 40px 0;
 `;
 
 const Stats = ({ title, url, children }) => {
   const [{ data, isLoading, isError }] = fetchDataApi(url);
-
   return (
     <StatsSection>
       <StatsHeader>
@@ -60,28 +59,19 @@ const Stats = ({ title, url, children }) => {
         />
       ) : (
         <StatsGrid>
-          {data && (
-            <>
-              <Card
-                title='Confirmed'
-                info='warning'
-                loading={isLoading}
-                data={data.confirmed.value}
-              />
-              <Card
-                title='Deaths'
-                info='danger'
-                loading={isLoading}
-                data={data.deaths.value}
-              />
-              <Card
-                title='Recovered'
-                info='success'
-                loading={isLoading}
-                data={data.recovered.value}
-              />
-            </>
-          )}
+          <Card
+            title='confirmed'
+            info='warning'
+            loading={isLoading}
+            data={data}
+          />
+          <Card title='deaths' info='danger' loading={isLoading} data={data} />
+          <Card
+            title='recovered'
+            info='success'
+            loading={isLoading}
+            data={data}
+          />
         </StatsGrid>
       )}
     </StatsSection>

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 
 import Stats from './Stats';
 
 import fetchDataApi from '../hooks/fetchDataApi';
-
-const API_ENDPOINT = process.env.REACT_APP_API_KEY;
 
 const WrapperSelect = styled.div`
   .flag-select {
@@ -22,9 +21,9 @@ const WrapperSelect = styled.div`
   }
 `;
 
-const CountrySelector = () => {
+const CountrySelector = ({ url }) => {
   const [{ data: countries, isLoading, isError }] = fetchDataApi(
-    `${API_ENDPOINT}/countries`
+    `${url}/countries`
   );
   const [selectedCountry, setSelectedCountry] = useState('');
 
@@ -40,7 +39,7 @@ const CountrySelector = () => {
     <>
       {countries && countries.iso3 && selectedCountry !== '' && (
         <Stats
-          title='Per country'
+          title='By country'
           url={`https://covid19.mathdro.id/api/countries/${selectedCountry}`}
         >
           <WrapperSelect>
@@ -54,6 +53,10 @@ const CountrySelector = () => {
       )}
     </>
   );
+};
+
+CountrySelector.propTypes = {
+  url: PropTypes.string.isRequired,
 };
 
 export default CountrySelector;
