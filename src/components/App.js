@@ -23,8 +23,11 @@ const App = () => {
       <Helmet>
         <meta charSet='utf-8' />
         <title>Covid-19 dashboard</title>
-        <meta name="description" content="A dashboard that displays official Covid-19 data from the American Johns Hopkins University" />
-        <link rel='canonical' href='https://covid19-dashboard.netlify.com/'/>
+        <meta
+          name='description'
+          content='A dashboard that displays official Covid-19 data from the American Johns Hopkins University'
+        />
+        <link rel='canonical' href='https://covid19-dashboard.netlify.com/' />
       </Helmet>
       <main>
         <Hero />
