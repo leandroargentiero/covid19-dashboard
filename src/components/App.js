@@ -1,5 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { Helmet } from 'react-helmet';
 import { theme, GlobalStyles } from '../themes';
 
 import '../fonts/index.css';
@@ -19,6 +20,12 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Covid-19 dashboard</title>
+        <meta name="description" content="A dashboard that displays official Covid-19 data from the American Johns Hopkins University" />
+        <link rel='canonical' href='https://covid19-dashboard.netlify.com/'/>
+      </Helmet>
       <main>
         <Hero />
         <div className='container'>
