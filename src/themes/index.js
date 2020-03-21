@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const statusColors = {
   success: '#03B65A',
-  warning: 'orange',
-  danger: '#F92427',
+  warning: '#FF6508',
+  danger: '#FF1810',
 };
 
 export const theme = {
@@ -12,7 +12,7 @@ export const theme = {
     primary: '#4B12A5',
     textOnPrimary: '#fff',
     secondary: '#79FC4C',
-    grey: '#f2f2f2',
+    grey: '#E6E6F0',
     background: '#fbf8ff',
     text: '#444',
     ...statusColors,

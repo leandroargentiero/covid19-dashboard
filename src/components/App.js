@@ -7,6 +7,7 @@ import Hero from './Hero';
 import FloatingContainer from './FloatingContainer';
 import Stats from './Stats';
 import CountrySelector from './CountrySelector';
+import Chart from './Chart';
 
 const API_ENDPOINT = process.env.REACT_APP_API_KEY;
 
@@ -19,7 +20,8 @@ const App = () => {
         <div className='container'>
           <FloatingContainer>
             <Stats title='Global status' url={API_ENDPOINT} />
-            <CountrySelector />
+            <Chart url={API_ENDPOINT} />
+            <CountrySelector url={API_ENDPOINT} />
           </FloatingContainer>
         </div>
       </main>
