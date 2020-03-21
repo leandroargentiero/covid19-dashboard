@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme, darkTheme, GlobalStyles } from '../themes';
+import { theme, GlobalStyles } from '../themes';
 
 import '../fonts/index.css';
 import Hero from './Hero';
@@ -9,7 +9,11 @@ import Stats from './Stats';
 import CountrySelector from './CountrySelector';
 import Chart from './Chart';
 
+import ReactGA from 'react-ga';
+
 const API_ENDPOINT = process.env.REACT_APP_API_KEY;
+ReactGA.initialize('UA-57911115-5');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const App = () => {
   return (
