@@ -5,6 +5,7 @@ import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
 
 import Stats from './Stats';
+import { mediaQuery } from '../themes';
 
 import fetchDataApi from '../hooks/fetchDataApi';
 
@@ -15,9 +16,19 @@ const WrapperSelect = styled.div`
     .filterBox input {
       padding: 8px 12px;
     }
+    ${mediaQuery.phone} {
+      margin-top: 16px;
+    }
   }
   .flag-select__options {
-    right: 0;
+    ${mediaQuery.phone} {
+      left: 0;
+    }
+
+    @media (min-width: 768px) {
+      left: none;
+      right: 0;
+    }
   }
 `;
 
