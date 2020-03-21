@@ -5,6 +5,7 @@ import fetchDataApi from '../hooks/fetchDataApi';
 import Card from './Card';
 
 import { formatDate } from '../utils';
+import ErrorPlaceholder from './ErrorPlaceholder';
 
 const StatsSection = styled.section`
   display: block;
@@ -39,44 +40,46 @@ const StatsGrid = styled.div`
 
 const Stats = ({ title, url, children }) => {
   const [{ data, isLoading, isError }] = fetchDataApi(url);
+
   return (
     <StatsSection>
+      <StatsHeader>
+        <StatsTitle>{title}</StatsTitle>
+        <StatsDate>
+          Last updated: {data?.lastUpdate && formatDate(data.lastUpdate)}
+        </StatsDate>
+      </StatsHeader>
+      {children && children}
       {isError ? (
-        <p>Something Went wrong...</p>
+        <ErrorPlaceholder
+          emoji='🧭'
+          message={`We couldn't find any data about this country`}
+        />
       ) : (
-        <>
-          <StatsHeader>
-            <StatsTitle>{title}</StatsTitle>
-            <StatsDate>
-              Last updated: {data?.lastUpdate && formatDate(data.lastUpdate)}
-            </StatsDate>
-          </StatsHeader>
-          {children && children}
-          <StatsGrid>
-            {data && (
-              <>
-                <Card
-                  title='Confirmed'
-                  info='warning'
-                  loading={isLoading}
-                  data={data.confirmed.value}
-                />
-                <Card
-                  title='Deaths'
-                  info='danger'
-                  loading={isLoading}
-                  data={data.deaths.value}
-                />
-                <Card
-                  title='Recovered'
-                  info='success'
-                  loading={isLoading}
-                  data={data.recovered.value}
-                />
-              </>
-            )}
-          </StatsGrid>
-        </>
+        <StatsGrid>
+          {data && (
+            <>
+              <Card
+                title='Confirmed'
+                info='warning'
+                loading={isLoading}
+                data={data.confirmed.value}
+              />
+              <Card
+                title='Deaths'
+                info='danger'
+                loading={isLoading}
+                data={data.deaths.value}
+              />
+              <Card
+                title='Recovered'
+                info='success'
+                loading={isLoading}
+                data={data.recovered.value}
+              />
+            </>
+          )}
+        </StatsGrid>
       )}
     </StatsSection>
   );

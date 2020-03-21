@@ -40,10 +40,6 @@ const LoadingIndicator = styled.p`
   color: ${props => props.theme.colors.primary};
 `;
 
-const CardRate = styled.p`
-  background: rgba(0, 0, 0, 0.1);
-`;
-
 const Card = ({ title, info, loading, data }) => {
   return (
     <CardWrapper>
