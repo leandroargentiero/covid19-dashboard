@@ -11,6 +11,7 @@ import CountrySelector from './CountrySelector';
 import Chart from './Chart';
 
 import ReactGA from 'react-ga';
+import DailyCases from './DailyCases';
 
 const API_ENDPOINT = process.env.REACT_APP_API_KEY;
 ReactGA.initialize('UA-57911115-5');
@@ -34,7 +35,7 @@ const App = () => {
         <div className='container'>
           <FloatingContainer>
             <Stats title='Global status' url={API_ENDPOINT} />
-            <Chart url={API_ENDPOINT} />
+            <DailyCases url={API_ENDPOINT} />
             <CountrySelector url={API_ENDPOINT} />
           </FloatingContainer>
         </div>
