@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -42,11 +42,6 @@ const CardValue = styled.h3`
         return '';
     }
   }};
-`;
-
-const LoadingIndicator = styled.p`
-  font-size: 1rem;
-  color: ${props => props.theme.colors.primary};
 `;
 
 const checkValue = (title, data) => {

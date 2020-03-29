@@ -33,9 +33,7 @@ const WrapperSelect = styled.div`
 `;
 
 const CountrySelector = ({ url }) => {
-  const [{ data: countries, isLoading, isError }] = fetchDataApi(
-    `${url}/countries`
-  );
+  const [{ data: countries }] = fetchDataApi(`${url}/countries`);
   const [selectedCountry, setSelectedCountry] = useState('');
 
   // get user's current country code
@@ -48,7 +46,7 @@ const CountrySelector = ({ url }) => {
 
   return (
     <>
-      {countries && countries.iso3 && selectedCountry !== '' && (
+      {countries && selectedCountry !== '' && (
         <Stats
           title='By country'
           url={`https://covid19.mathdro.id/api/countries/${selectedCountry}`}
@@ -57,7 +55,7 @@ const CountrySelector = ({ url }) => {
             <ReactFlagsSelect
               searchable={true}
               defaultCountry={selectedCountry}
-              onSelect={code => setSelectedCountry(countries.iso3[code])}
+              onSelect={code => setSelectedCountry(code)}
             />
           </WrapperSelect>
         </Stats>

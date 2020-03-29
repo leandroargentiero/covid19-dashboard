@@ -8,7 +8,6 @@ import Hero from './Hero';
 import FloatingContainer from './FloatingContainer';
 import Stats from './Stats';
 import CountrySelector from './CountrySelector';
-import Chart from './Chart';
 
 import ReactGA from 'react-ga';
 import DailyCases from './DailyCases';
@@ -34,7 +33,7 @@ const App = () => {
         <Hero />
         <div className='container'>
           <FloatingContainer>
-            <Stats title='Global status' url={API_ENDPOINT} />
+            <Stats title='Global cases' url={API_ENDPOINT} />
             <DailyCases url={API_ENDPOINT} />
             <CountrySelector url={API_ENDPOINT} />
           </FloatingContainer>

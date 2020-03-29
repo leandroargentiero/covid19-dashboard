@@ -28,7 +28,6 @@ const Chart = ({ url, name }) => {
   useEffect(() => {
     if (data) {
       const computedCases = data.map(x => {
-        console.log(x);
         let caseObj = {};
         caseObj['totalconfirmed'] = x.confirmed.total;
         caseObj['dailyNewConfirmed'] = x.deltaConfirmedDetail.total;
@@ -36,7 +35,6 @@ const Chart = ({ url, name }) => {
         caseObj['reportDate'] = moment(x.reportDate).format('DD MMMM');
         return caseObj;
       });
-      console.log(computedCases);
       setDailyCases(computedCases);
     }
   }, [data]);

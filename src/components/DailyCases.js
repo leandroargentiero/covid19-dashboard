@@ -8,6 +8,7 @@ const CasesWrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 24px;
+  margin-bottom: 60px;
 `;
 
 const DailyCases = ({ url }) => {
